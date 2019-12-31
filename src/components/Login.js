@@ -43,9 +43,10 @@ const FormikLoginForm = withFormik({
         department: values.department
       })
       .then(res => {
-        console.log("login: ", res);
+        console.log("login: ", res.config.data);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/classes");
+        localStorage.setItem("department", res.data.token);
+        props.history.push("/clientdashboard");
       })
       .catch(err => console.log(err.message));
 

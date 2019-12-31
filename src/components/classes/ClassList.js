@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchClasses } from "../actions";
+import { fetchClasses } from "../../actions";
 import ClassCard from "./ClassCard";
 
 class ClassList extends Component {
@@ -21,7 +21,6 @@ class ClassList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state map to props: ", state.classes.classes);
   return {
     classes: state.classes.classes
   };

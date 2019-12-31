@@ -9,16 +9,21 @@ import PrivateRoute from "./PrivateRoute";
 // end of Redux
 
 // components
+import Header from "./components/Header";
 import Login from "./components/Login";
-import ClassList from "./components/ClassList";
+import ClientDashboard from "./components/client/ClientDashboard";
 
 function App() {
   return (
     <Provider store={Store}>
-      <div>Anywhere Fitness App</div>
+      <Header />
 
       <Switch>
-        <PrivateRoute exact path="/classes" component={ClassList} />
+        <PrivateRoute
+          exact
+          path="/clientdashboard"
+          component={ClientDashboard}
+        />
         <Route path="/" component={Login} />
       </Switch>
     </Provider>
