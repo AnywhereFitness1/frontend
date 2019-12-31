@@ -1,19 +1,19 @@
-import { FETCH_POSTS } from "../actions";
+import { FETCH_CLASSES } from "../actions";
 
 const initialState = {
-  data: []
+  classes: []
 };
 
-const demoReducer = (state = initialState, action) => {
+const classReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_POSTS:
+    case FETCH_CLASSES:
       return {
         ...state,
-        data: action.payload
+        classes: action.payload
       };
     default:
       return state;
   }
 };
 
-export default demoReducer;
+export default classReducer;

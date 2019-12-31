@@ -1,14 +1,15 @@
 import axioswithAuth from "../axiosWithAuth";
+
 // constant variables
-export const FETCH_POSTS = "FETCH_POSTS";
+export const FETCH_CLASSES = "FETCH_CLASSES";
 //
 
 export const fetchClasses = () => dispatch => {
   axioswithAuth()
-    .get("/posts")
+    .get("/classes")
     .then(res =>
       dispatch({
-        type: FETCH_POSTS,
+        type: FETCH_CLASSES,
         payload: res.data
       })
     )
