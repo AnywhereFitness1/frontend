@@ -12,7 +12,10 @@ import PrivateRoute from "./PrivateRoute";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import ClientDashboard from "./components/client/ClientDashboard";
+
 import InstructorDashboard from "./components/instructor/InstructorDashboard";
+import UpdateClass from "./components/instructor/UpdateClass";
+import InstructorClass from "./components/instructor/InstructorClass";
 
 function App() {
   return (
@@ -26,6 +29,10 @@ function App() {
           path="/instructordashboard"
           component={InstructorDashboard}
         />
+        <Route exact path="/Instructor-Class/:id" component={InstructorClass} />
+        <Route exact path="/update-class/:id" component={UpdateClass} />
+
+        <PrivateRoute exact path="/update-class" component={UpdateClass} />
         <Route path="/" component={Login} />
       </Switch>
     </Provider>

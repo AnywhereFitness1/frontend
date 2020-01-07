@@ -22,7 +22,6 @@ export default function ClassCard(props) {
       <CardText>Location: {location}</CardText>
       <CardText>Class Size: {max_size}</CardText>
       <CardText>Available Spots: {max_size - current_size}</CardText>
-      <Button>Sign UP</Button>
     </Card>
   );
 }

@@ -2,6 +2,9 @@ import axioswithAuth from "../axiosWithAuth";
 
 // constant variables
 export const FETCH_CLASSES = "FETCH_CLASSES";
+export const FETCH_SINGLE_CLASS = "FETCH_SINGLE_CLASS";
+export const FETCH_UPDATE_CLASS = "FETCH_UPDATE_CLASS";
+
 //
 
 export const fetchClasses = () => dispatch => {
@@ -13,5 +16,35 @@ export const fetchClasses = () => dispatch => {
         payload: res.data
       })
     )
+    .catch(err => console.log(err));
+};
+
+export const fetchSingleClass = id => dispatch => {
+  axioswithAuth()
+    .get(`/${id}`)
+    .then(res =>
+      dispatch({
+        type: FETCH_SINGLE_CLASS,
+        payload: res.data
+      })
+    )
+    .catch(err => console.log(err));
+};
+
+export const fetchUpdateClass = item => dispatch => {
+  axioswithAuth()
+    .put(`/${item.id}`, item)
+    .then(res =>
+      dispatch({
+        type: FETCH_UPDATE_CLASS,
+        payload: res.data
+      })
+    );
+};
+
+export const fetchDeleteClass = id => {
+  axioswithAuth()
+    .delete(`/${id}`)
+    .then(res => {})
     .catch(err => console.log(err));
 };
