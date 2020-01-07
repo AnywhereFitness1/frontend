@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ClassList from "../classes/ClassList";
+import ClassList from "./ClassList";
 
 export default class ClientDashboard extends Component {
   render() {

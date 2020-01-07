@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import ClientDashboard from "./components/client/ClientDashboard";
+import InstructorDashboard from "./components/instructor/InstructorDashboard";
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
       <Header />
 
       <Switch>
+        <PrivateRoute exact path="/dashboard" component={ClientDashboard} />
         <PrivateRoute
           exact
-          path="/clientdashboard"
-          component={ClientDashboard}
+          path="/instructorashboard"
+          component={InstructorDashboard}
         />
         <Route path="/" component={Login} />
       </Switch>

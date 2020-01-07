@@ -21,6 +21,7 @@ class ClassList extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.classes);
   return {
     classes: state.classes.classes
   };
