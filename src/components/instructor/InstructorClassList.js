@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { fetchClasses } from "../../actions";
-import ClassCard from "./ClientClassCard";
+import ClassCard from "./InstructorClassCard";
 
 class ClassList extends Component {
   componentWillMount() {

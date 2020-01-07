@@ -23,7 +23,7 @@ function App() {
         <PrivateRoute exact path="/dashboard" component={ClientDashboard} />
         <PrivateRoute
           exact
-          path="/instructorashboard"
+          path="/instructordashboard"
           component={InstructorDashboard}
         />
         <Route path="/" component={Login} />
