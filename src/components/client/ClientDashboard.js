@@ -5,6 +5,7 @@ export default class ClientDashboard extends Component {
   render() {
     return (
       <main>
+        search
         <ClassList />
       </main>
     );

@@ -5,13 +5,40 @@ import { fetchClasses } from "../../actions";
 import ClassCard from "./ClientClassCard";
 
 class ClassList extends Component {
-  componentWillMount() {
-    this.props.fetchClasses();
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: "",
+      results: []
+    };
   }
+  componentDidMount() {
+    this.props.fetchClasses();
+    this.setState({
+      results: this.props.classes
+    });
+  }
+
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({
+      searchTerm: e.target.value
+    });
+
+    console.log("value: ", e.target.value);
+  };
 
   render() {
     return (
       <div>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="search"
+          value={this.state.searchTerm}
+          onChange={this.handleChange}
+        />
         {this.props.classes.map(data => (
           <ClassCard key={data.id} data={data} />
         ))}
@@ -21,7 +48,6 @@ class ClassList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.classes);
   return {
     classes: state.classes.classes
   };

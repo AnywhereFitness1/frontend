@@ -1,0 +1,25 @@
+.navBar {
+  background: $silver;
+  height: 6rem;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10rem;
+
+  .navLinks {
+    display: flex;
+    flex-direction: row;
+
+    a {
+      margin: 0 2rem;
+      padding: 0.5rem 1rem;
+    }
+
+    a:hover {
+      background-color: $lessRedcolor;
+      cursor: pointer;
+    }
+  }
+}

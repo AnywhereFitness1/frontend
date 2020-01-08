@@ -5,7 +5,7 @@ class InstructorDashboard extends Component {
   render() {
     return (
       <main>
-        Insturctor Dashboard
+        <h1 className="primaryHeading">My Dashboard</h1>
         <ClassList />
       </main>
     );
