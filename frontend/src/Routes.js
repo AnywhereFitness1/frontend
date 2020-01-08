@@ -8,7 +8,6 @@ export default function Routes() {
     <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/" exact component={Home} />
-        { /* Finally, catch all unmatched routes */ }
     </Switch>
   );
 }
