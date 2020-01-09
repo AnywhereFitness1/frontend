@@ -28,9 +28,9 @@ class InstructorClass extends Component {
             <ClassCard key={data.id} data={data} />
           ))}
         </div>
+
         <div className="cardButtons">
           <button>Reserve</button>
-
           <button>Cancel Reservation</button>
         </div>
       </section>

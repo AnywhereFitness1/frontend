@@ -15,6 +15,8 @@ import SignUp from "./components/Signup";
 
 import ClientDashboard from "./components/client/ClientDashboard";
 import ClientClass from "./components/client/ClientClass";
+import MyReservations from "./components/client/MyReservations";
+import ClNavBar from "./components/client/ClNavBar";
 
 import InstructorDashboard from "./components/instructor/InstructorDashboard";
 import UpdateClass from "./components/instructor/UpdateClass";
@@ -37,6 +39,8 @@ function App() {
     <Provider store={Store}>
       <Header />
 
+      <ClNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
+      <div style={{ marginTop: "2rem" }}></div>
       <InNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
       <Route exact path="/signup" component={SignUp} />
 
@@ -53,6 +57,11 @@ function App() {
           component={InstructorClass}
         />
         <PrivateRoute exact path="/Client-Class/:id" component={ClientClass} />
+        <PrivateRoute
+          exact
+          path="/Reserved-Class/"
+          component={MyReservations}
+        />
 
         <PrivateRoute exact path="/update-class/:id" component={UpdateClass} />
         <PrivateRoute exact path="/update-class" component={UpdateClass} />

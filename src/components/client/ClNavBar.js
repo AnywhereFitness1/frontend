@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, NavLink } from "reactstrap";
 
-const InNavBar = props => {
+const ClNavBar = props => {
   const handleLogout = e => {
     e.preventDefault();
     props.setAuth(false);
@@ -12,12 +12,12 @@ const InNavBar = props => {
 
   return (
     <Navbar className="navBar">
-      <Link to="/instructordashboard">Instructor Anywhere Fitness</Link>
+      <Link to="/dashboard">Client Anywhere Fitness</Link>
 
       {props.isAuthenticated ? (
         <div className="navLinks">
-          <NavLink href="/instructordashboard">Instructor Dashboard</NavLink>
-          <NavLink href="/add-class">Add New Class</NavLink>
+          <NavLink href="/dashboard">Client Dashboard</NavLink>
+          <NavLink href="/Reserved-Class/">My Reservations</NavLink>
           <NavLink onClick={handleLogout}>Logout</NavLink>
         </div>
       ) : (
@@ -27,4 +27,4 @@ const InNavBar = props => {
   );
 };
 
-export default InNavBar;
+export default ClNavBar;

@@ -57,18 +57,22 @@ export default class ClientDashboard extends Component {
           {localStorage.getItem("user")}
         </h1>
         <h1 className="primaryHeading">My Dashboard</h1>
-        Search
-        <form onSubmit={this.handleSubmit}>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            placeholder="search"
-            value={this.state.searchTerm}
-            onChange={this.handleChange}
-          />
-          <button>submit</button>
-        </form>
+
+        <div className="searchContainer">
+          <h2>Search Available Classes</h2>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              className="classSearch"
+              id="name"
+              type="text"
+              name="name"
+              placeholder="search"
+              value={this.state.searchTerm}
+              onChange={this.handleChange}
+            />
+            <button className="btn">Submit</button>
+          </form>
+        </div>
       </main>
     );
   };

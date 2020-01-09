@@ -1,7 +1,12 @@
-import { FETCH_CLASSES, FETCH_UPDATE_CLASS } from "../actions";
+import {
+  FETCH_CLASSES,
+  FETCH_UPDATE_CLASS,
+  FETCH_RESERVED_CLASSES
+} from "../actions";
 
 const initialState = {
-  classes: []
+  classes: [],
+  reservedClasses: []
 };
 
 const classReducer = (state = initialState, action) => {
@@ -12,10 +17,14 @@ const classReducer = (state = initialState, action) => {
         classes: action.payload
       };
     case FETCH_UPDATE_CLASS:
-      console.log("reducer", action.payload);
       return {
         ...state,
         classes: action.payload.project
+      };
+    case FETCH_RESERVED_CLASSES:
+      return {
+        ...state,
+        reservedClasses: action.payload
       };
     default:
       return state;

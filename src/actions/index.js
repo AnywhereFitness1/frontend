@@ -4,6 +4,7 @@ import axioswithAuth from "../axiosWithAuth";
 export const FETCH_CLASSES = "FETCH_CLASSES";
 export const FETCH_SINGLE_CLASS = "FETCH_SINGLE_CLASS";
 export const FETCH_UPDATE_CLASS = "FETCH_UPDATE_CLASS";
+export const FETCH_RESERVED_CLASSES = "FETCH_RESERVED_CLASSES";
 
 //
 
@@ -46,5 +47,17 @@ export const fetchDeleteClass = id => {
   axioswithAuth()
     .delete(`/${id}`)
     .then(res => {})
+    .catch(err => console.log(err));
+};
+
+export const fetchReservedClasses = () => dispatch => {
+  axioswithAuth()
+    .get("/classes")
+    .then(res =>
+      dispatch({
+        type: FETCH_RESERVED_CLASSES,
+        payload: res.data
+      })
+    )
     .catch(err => console.log(err));
 };
