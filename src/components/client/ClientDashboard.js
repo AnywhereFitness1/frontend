@@ -81,10 +81,18 @@ export default class ClientDashboard extends Component {
       return (
         <div>
           {this.header()}
-          there is no search results
-          <button onClick={this.handleClasses}>
-            Click here to see all classes
-          </button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}
+          >
+            <h3>there is no search results</h3>
+            <button onClick={this.handleClasses} className="btn-class">
+              Click here to see all classes
+            </button>
+          </div>
         </div>
       );
     } else if (
@@ -94,8 +102,8 @@ export default class ClientDashboard extends Component {
       return (
         <div>
           {this.header()}
-          <button onClick={this.handleClasses}>
-            Click Here to Go Back to Class List{" "}
+          <button onClick={this.handleClasses} className="btn-class">
+            Click Here to Go Back to Class List
           </button>
           {this.state.resultData.map(data => (
             <ClassCard key={data.id} data={data} />

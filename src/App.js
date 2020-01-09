@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 
 // components
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 
@@ -68,6 +69,7 @@ function App() {
         <PrivateRoute exact path="/add-class" component={AddClass} />
         <Route exact path="/" component={Login} />
       </Switch>
+      <Footer />
     </Provider>
   );
 }

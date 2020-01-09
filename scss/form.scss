@@ -29,6 +29,19 @@ select {
   background-color: $blue-color;
   cursor: pointer;
 }
+.btn-class {
+  border: 1px solid $blue-color1;
+  border-radius: 2rem;
+  font-size: 2.5rem;
+  display: black;
+  margin: 2rem 30%;
+}
+
+.btn-class:hover {
+  background-color: $blue-color;
+  cursor: pointer;
+}
+
 .searchContainer {
   padding: 0 7rem;
   display: flex;

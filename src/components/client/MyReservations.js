@@ -26,13 +26,35 @@ class MyReservations extends Component {
   };
 
   render() {
-    return (
-      <div>
-        {this.props.classes.map(data => (
-          <ClassDetail key={data.id} data={data} />
-        ))}
-      </div>
-    );
+    if (this.props.classes.length >= 1) {
+      return (
+        <div>
+          {this.props.classes.map(data => (
+            <ClassDetail key={data.id} data={data} />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "5rem"
+          }}
+        >
+          <p> You do not have any reservations</p>
+          <Link
+            to="/dashboard"
+            className="btn-class"
+            style={{ padding: ".5rem 1rem" }}
+          >
+            Clich here to see all the class
+          </Link>
+        </div>
+      );
+    }
   }
 }
 
