@@ -7,6 +7,10 @@ import ClassCard from "./ClientClassCard";
 class ClassList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchTerm: "",
+      results: []
+    };
   }
   componentDidMount() {
     this.props.fetchClasses();
@@ -27,6 +31,14 @@ class ClassList extends Component {
   render() {
     return (
       <div>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="search"
+          value={this.state.searchTerm}
+          onChange={this.handleChange}
+        />
         {this.props.classes.map(data => (
           <ClassCard key={data.id} data={data} />
         ))}

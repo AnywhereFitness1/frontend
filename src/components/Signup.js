@@ -1,27 +1,29 @@
 import React from "react";
+import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 import axiosWithAuth from "../axiosWithAuth";
 
-const Signup = () => {
+const Signup = props => {
   return (
-    <Form>
-      <Field type="text" name="firstName" placeholder="First Name" />
-      <Field type="text" name="lastName" placeholder="Last Name" />
-      <Field type="email" name="email" placeholder="Email" />
-      <Field
-        type="phone_number"
-        name="phoneNumber"
-        placeholder="Phone Number"
-      />
+    <Form className="signupForm">
       <Field type="text" name="username" placeholder="username" />
+      {props.touched.username && props.errors.username && (
+        <p className="error">{props.errors.username}</p>
+      )}
       <Field type="password" name="password" placeholder="password" />
+      {props.touched.password && props.errors.password && (
+        <p className="error">{props.errors.password}</p>
+      )}
       <Field
         type="password"
         name="passwordVerify"
         placeholder="Verify password"
       />
+      {props.touched.passwordVerify && props.errors.passwordVerify && (
+        <p className="error">{props.errors.passwordVerify}</p>
+      )}
       <Field as="select" name="department">
         <option value="">Choose Department</option>
         <option value="client">Client</option>
@@ -32,4 +34,62 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const FormikSingupForm = withFormik({
+  mapPropsToValues({ username, password, passwordVerify, department }) {
+    return {
+      username: username || "",
+      password: password || "",
+      passwordVerify: passwordVerify || "",
+      department: department || ""
+    };
+  },
+  //================validation===================
+  validationSchema: Yup.object({
+    // username: Yup.string().required("username is required"),
+    password: Yup.string().required("password is required"),
+
+    passwordVerify: Yup.string().oneOf(
+      [Yup.ref("password"), null],
+      "Passwords don't match"
+    )
+  }),
+
+  // Yup.string()
+  //     .oneOf([Yup.ref("password"), null])
+  //     .required("Password confirm is required")
+
+  //=========end of validation===================
+
+  handleSubmit(values, { resetForm, props }) {
+    axios
+      .post("https://anywhere-fitness92.herokuapp.com/api/auth/register", {
+        username: values.username,
+        password: values.password,
+        department: values.department
+      })
+      .then(res => () => {
+        console.log("registration data: ", res);
+        axiosWithAuth()
+          .post("/login", {
+            username: values.username,
+            password: values.password,
+            department: values.department
+          })
+          .then(res => {
+            localStorage.setItem("token", res.data.token);
+            props.history.push("/dashboard");
+          });
+      })
+      .catch(err => console.log(err.message));
+  }
+})(Signup);
+
+export default FormikSingupForm;
+
+// name: name || "",
+// // email: email || "",
+// // phone: phone || "",
+
+// <Field type="text" name="name" placeholder="Name" />
+// <Field type="email" name="email" placeholder="Email" />
+// <Field type="tel" name="phone" placeholder="Phone Number" />

@@ -1,0 +1,18 @@
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  input,
+  select {
+    height: 2rem;
+    width: 80%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid $blue-color;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    color: black;
+  }
+}

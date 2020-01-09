@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, NavbarBrand, NavLink } from "reactstrap";
 
 const InNavBar = props => {
-  console.log("nav props: ", props);
-
   const handleLogout = e => {
     e.preventDefault();
     props.setAuth(false);
     localStorage.clear("token");
   };
+
   return (
     <Navbar className="navBar">
-      <NavbarBrand>
-        <Link to="/instructordashboard">Anywhere Fittness</Link>
-      </NavbarBrand>
+      <Link to="/instructordashboard">Anywhere Fittness</Link>
 
       {props.isAuthenticated ? (
         <div className="navLinks">
@@ -23,7 +20,7 @@ const InNavBar = props => {
           <NavLink onClick={handleLogout}>Logout</NavLink>
         </div>
       ) : (
-        <></>
+        <NavLink href="/">Login</NavLink>
       )}
     </Navbar>
   );

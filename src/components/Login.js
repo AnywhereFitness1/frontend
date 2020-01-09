@@ -1,6 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 import axiosWithAuth from "../axiosWithAuth";
 
@@ -15,6 +16,7 @@ const Login = () => {
         <option value="instructor">Instructor</option>
       </Field>
       <button type="submit">Submit</button>
+      <Link to="/signup">Click Here to Sign up</Link>
     </Form>
   );
 };
@@ -44,6 +46,8 @@ const FormikLoginForm = withFormik({
       })
       .then(res => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", res.data.message);
+
         props.history.push("/dashboard");
       })
       .catch(err => console.log(err.message));

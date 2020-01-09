@@ -47,7 +47,6 @@ class InstructorClass extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("Single Class: ", state.singleClass);
   return {
     class: state.singleClass.class
   };

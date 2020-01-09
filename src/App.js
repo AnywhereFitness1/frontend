@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 // components
 import Header from "./components/Header";
 import Login from "./components/Login";
+import SignUp from "./components/Signup";
+
 import ClientDashboard from "./components/client/ClientDashboard";
 
 import InstructorDashboard from "./components/instructor/InstructorDashboard";
@@ -35,6 +37,7 @@ function App() {
       <Header />
 
       <InNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
+      <Route exact path="/signup" component={SignUp} />
 
       <Switch>
         <PrivateRoute exact path="/dashboard" component={ClientDashboard} />
@@ -43,12 +46,15 @@ function App() {
           path="/instructordashboard"
           component={InstructorDashboard}
         />
-        <Route exact path="/Instructor-Class/:id" component={InstructorClass} />
-        <Route exact path="/update-class/:id" component={UpdateClass} />
-
+        <PrivateRoute
+          exact
+          path="/Instructor-Class/:id"
+          component={InstructorClass}
+        />
+        <PrivateRoute exact path="/update-class/:id" component={UpdateClass} />
         <PrivateRoute exact path="/update-class" component={UpdateClass} />
         <PrivateRoute exact path="/add-class" component={AddClass} />
-        <Route path="/" component={Login} />
+        <Route exact path="/" component={Login} />
       </Switch>
     </Provider>
   );
