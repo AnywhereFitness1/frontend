@@ -1,56 +1,56 @@
-import React from "react";
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
+import React, { useState } from "react";
+import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 
-import axiosWithAuth from "../axiosWithAuth";
 
-const Login = () => {
-  return (
-    <Form>
-      <Field type="text" name="username" placeholder="username" />
-      <Field type="password" name="password" placeholder="password" />
-      <Field as="select" name="department">
-        <option value="">Choose Department</option>
-        <option value="client">Client</option>
-        <option value="instructor">Instructor</option>
-      </Field>
-      <button type="submit">Submit</button>
-    </Form>
-  );
-};
 
-const FormikLoginForm = withFormik({
-  mapPropsToValues({ username, password, department }) {
-    return {
-      username: username || "",
-      password: password || "",
-      department: department || ""
-    };
-  },
-  //==================Validation Schema==============
-  validationSchema: Yup.object().shape({
-    username: Yup.string().required("username is required"),
-    password: Yup.string().required("password is required"),
-    department: Yup.string().required("Department is required")
-  }),
-  //==========End of Validation Schema=======
+export default function Login(props) {
+  const [UserName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [department, setDepartment] = useState("");
+  
 
-  handleSubmit(values, { resetForm, props }) {
-    axiosWithAuth()
-      .post("/login", {
-        username: values.username,
-        password: values.password,
-        department: values.department
-      })
-      .then(res => {
-        console.log("login: ", res.config.data);
-        localStorage.setItem("token", res.data.token);
-        props.history.push("/dashboard");
-      })
-      .catch(err => console.log(err.message));
-
-    resetForm();
+  function validateForm() {
+    return UserName.length > 0 && password.length > 0 && department.length;
   }
-})(Login);
 
-export default FormikLoginForm;
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  return (
+    <div className="Login">
+      <form onSubmit={handleSubmit}>
+        <FormGroup controlId="UserName" bsSize="large">
+          <FormLabel>UserName</FormLabel>
+          <FormControl
+            autoFocus
+            type="UserName"
+            value={UserName}
+            onChange={e => setUserName(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup controlId="password" bsSize="large">
+          <FormLabel>Password</FormLabel>
+          <FormControl
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            type="password"
+          />
+        </FormGroup>
+        <FormGroup controlId="department" bsSize="large">
+          <FormLabel>Department</FormLabel>
+          
+          <FormControl
+            value={department}
+            onChange={e => setDepartment(e.target.value)}
+            type="department"
+          />
+        </FormGroup>
+        <Button block bsSize="large" disabled={!validateForm()} type="submit">
+          Login
+        </Button>
+      </form>
+    </div>
+    
+  );
+}
