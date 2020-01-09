@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, DropdownButton, Dropdown } from "react-bootstrap";
 
 
 
@@ -21,7 +21,9 @@ export default function Login(props) {
     <div className="Login">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="UserName" bsSize="large">
-          <FormLabel>UserName</FormLabel>
+          <FormLabel>
+            UserName
+            </FormLabel>
           <FormControl
             autoFocus
             type="UserName"
@@ -30,7 +32,9 @@ export default function Login(props) {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <FormLabel>Password</FormLabel>
+          <FormLabel>
+            Password
+            </FormLabel>
           <FormControl
             value={password}
             onChange={e => setPassword(e.target.value)}
@@ -38,8 +42,12 @@ export default function Login(props) {
           />
         </FormGroup>
         <FormGroup controlId="department" bsSize="large">
-          <FormLabel>Department</FormLabel>
-          
+          <FormLabel>
+          <DropdownButton id="dropdown-basic-button" title="Department">
+          <Dropdown.Item href="#/action-1">Client</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Instructor</Dropdown.Item>
+          </DropdownButton>
+            </FormLabel>
           <FormControl
             value={department}
             onChange={e => setDepartment(e.target.value)}
