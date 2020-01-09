@@ -1,5 +1,5 @@
 .Home .lander {
-    padding: 80px 0;
+    padding: 10px;
     text-align: center;
   }
   
@@ -12,5 +12,8 @@
     color: rgb(14, 196, 202);
   }
   .Home h1 {
+    display: flex;
+    justify-content: center;
     color: rgb(14, 196, 202);
+    padding: 10px 0;
   }
