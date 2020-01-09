@@ -14,6 +14,7 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 
 import ClientDashboard from "./components/client/ClientDashboard";
+import ClientClass from "./components/client/ClientClass";
 
 import InstructorDashboard from "./components/instructor/InstructorDashboard";
 import UpdateClass from "./components/instructor/UpdateClass";
@@ -51,6 +52,8 @@ function App() {
           path="/Instructor-Class/:id"
           component={InstructorClass}
         />
+        <PrivateRoute exact path="/Client-Class/:id" component={ClientClass} />
+
         <PrivateRoute exact path="/update-class/:id" component={UpdateClass} />
         <PrivateRoute exact path="/update-class" component={UpdateClass} />
         <PrivateRoute exact path="/add-class" component={AddClass} />

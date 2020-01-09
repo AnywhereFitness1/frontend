@@ -7,6 +7,7 @@ const InNavBar = props => {
     e.preventDefault();
     props.setAuth(false);
     localStorage.clear("token");
+    localStorage.clear("user");
   };
 
   return (

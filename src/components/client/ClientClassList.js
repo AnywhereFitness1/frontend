@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchClasses } from "../../actions";
 import ClassCard from "../ClassCard";
@@ -28,7 +29,7 @@ class ClassList extends Component {
     return (
       <div>
         {this.props.classes.map(data => (
-          <ClassCard key={data.id} data={data} />
+          <ClassDetail key={data.id} data={data} />
         ))}
       </div>
     );
@@ -42,3 +43,13 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { fetchClasses })(ClassList);
+
+function ClassDetail({ data }) {
+  return (
+    <>
+      <Link to={`/Client-Class/${data.id}`}>
+        <ClassCard key={data.id} data={data} />
+      </Link>
+    </>
+  );
+}
