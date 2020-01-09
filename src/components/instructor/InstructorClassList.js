@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchClasses } from "../../actions";
-import ClassCard from "./InstructorClassCard";
+import ClassCard from "../ClassCard";
 
 class ClassList extends Component {
   componentWillMount() {

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ClassList from "./ClientClassList";
-import SearchResults from "./SearchedClasses";
 import axiosWithAuth from "../../axiosWithAuth";
 
-import ClassCard from "./ClientClassCard";
+import ClassCard from "../ClassCard";
 
 export default class ClientDashboard extends Component {
   constructor(props) {
@@ -57,7 +56,8 @@ export default class ClientDashboard extends Component {
         <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
           {localStorage.getItem("user")}
         </h1>
-        search
+        <h1 className="primaryHeading">My Dashboard</h1>
+        Search
         <form onSubmit={this.handleSubmit}>
           <input
             id="name"

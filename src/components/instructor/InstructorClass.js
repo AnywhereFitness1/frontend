@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { fetchSingleClass, fetchDeleteClass } from "../../actions";
 
-import ClassCard from "./InstructorClassCard";
+import ClassCard from "../ClassCard";
 
 class InstructorClass extends Component {
   constructor(props) {
