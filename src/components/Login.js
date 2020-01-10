@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, FormLabel, DropdownButton, Dropdown } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Form } from "react-bootstrap";
 
 
 
@@ -43,16 +43,12 @@ export default function Login(props) {
         </FormGroup>
         <FormGroup controlId="department" bsSize="large">
           <FormLabel>
-          <DropdownButton id="dropdown-basic-button" title="Department">
-          <Dropdown.Item href="#/action-1">Client</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Instructor</Dropdown.Item>
-          </DropdownButton>
+          <Form.Control as="select">
+      <option value="client">client</option>
+      <option value="instructor">instructor</option>
+    </Form.Control>
             </FormLabel>
-          <FormControl
-            value={department}
-            onChange={e => setDepartment(e.target.value)}
-            type="department"
-          />
+         
         </FormGroup>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
           Login
