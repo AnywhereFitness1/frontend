@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import ClassList from "./ClientClassList";
-import axiosWithAuth from "../../axiosWithAuth";
+import axiosWithAuth from "../../authentication/axiosWithAuth";
 
 import ClassCard from "../ClassCard";
+// import ClientGuide from "./ClientGuide";
 
 export default class ClientDashboard extends Component {
   constructor(props) {
@@ -77,6 +77,7 @@ export default class ClientDashboard extends Component {
     );
   };
   render() {
+    console.log("resultdata: ", this.state.resultData.length);
     if (this.state.resultData.length === 0 && this.state.results === true) {
       return (
         <div>

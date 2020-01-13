@@ -1,10 +1,11 @@
-import axioswithAuth from "../axiosWithAuth";
+import axioswithAuth from "../authentication/axiosWithAuth";
 
 // constant variables
 export const FETCH_CLASSES = "FETCH_CLASSES";
 export const FETCH_SINGLE_CLASS = "FETCH_SINGLE_CLASS";
 export const FETCH_UPDATE_CLASS = "FETCH_UPDATE_CLASS";
 export const FETCH_RESERVED_CLASSES = "FETCH_RESERVED_CLASSES";
+export const RESERVE_CLASS = "RESERVE_CLASS";
 
 //
 

@@ -5,10 +5,7 @@ class InstructorDashboard extends Component {
   render() {
     return (
       <main>
-        <h1 style={{ textAlign: "center", marginTop: "2rem" }}>
-          {localStorage.getItem("user")}
-        </h1>
-        <h1 className="primaryHeading">My Dashboard</h1>
+        <h1 className="primaryHeading">Dashboard</h1>
         <ClassList />
       </main>
     );

@@ -5,10 +5,16 @@
   align-items: center;
 }
 
-input,
-select {
-  height: 2rem;
-  width: 80%;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3rem;
+}
+
+input {
+  height: 3rem;
+  width: 100%;
   margin: 1rem 0;
   padding: 1rem;
   border: 1px solid $blue-color;
@@ -16,30 +22,16 @@ select {
   font-size: 1.5rem;
   color: black;
 }
-
-.btn {
-  height: 4rem;
-  width: 14rem;
-  font-size: 3rem;
-  border: 1px solid $blue-color1;
-  border-radius: 3rem;
-}
-
-.btn:hover {
-  background-color: $blue-color;
-  cursor: pointer;
-}
-.btn-class {
-  border: 1px solid $blue-color1;
+select,
+option {
+  height: 5rem;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid $blue-color;
   border-radius: 2rem;
-  font-size: 2.5rem;
-  display: black;
-  margin: 2rem 30%;
-}
-
-.btn-class:hover {
-  background-color: $blue-color;
-  cursor: pointer;
+  font-size: 1.5rem;
+  color: black;
 }
 
 .searchContainer {

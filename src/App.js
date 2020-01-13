@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import Store from "./Store";
 
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./authentication/PrivateRoute";
 // end of Redux
 
 // components
@@ -38,12 +38,23 @@ function App() {
 
   return (
     <Provider store={Store}>
-      <Header />
+      <Header setAuth={setAuth} isAuthenticated={isAuthenticated} />
 
-      <ClNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
-      <div style={{ marginTop: "2rem" }}></div>
-      <InNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
-      <Route exact path="/signup" component={SignUp} />
+      <Route
+        exact
+        path="/login"
+        render={props =>
+          isAuthenticated ? (
+            props.history.push("/dashboard")
+          ) : (
+            <Login
+              {...props}
+              setAuth={setAuth}
+              isAuthenticated={isAuthenticated}
+            />
+          )
+        }
+      />
 
       <Switch>
         <PrivateRoute exact path="/dashboard" component={ClientDashboard} />
@@ -67,7 +78,7 @@ function App() {
         <PrivateRoute exact path="/update-class/:id" component={UpdateClass} />
         <PrivateRoute exact path="/update-class" component={UpdateClass} />
         <PrivateRoute exact path="/add-class" component={AddClass} />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
       </Switch>
       <Footer />
     </Provider>
@@ -75,3 +86,8 @@ function App() {
 }
 
 export default App;
+
+// {/* <ClNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
+// <div style={{ marginTop: "2rem" }}></div>
+// <InNavBar setAuth={setAuth} isAuthenticated={isAuthenticated} />
+// <Route exact path="/signup" component={SignUp} /> */}

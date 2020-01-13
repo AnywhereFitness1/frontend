@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import axiosWithAuth from "../../axiosWithAuth";
+import axiosWithAuth from "../../authentication/axiosWithAuth";
 import { fetchUpdateClass } from "../../actions";
 
 const initialItems = {
@@ -41,80 +41,82 @@ const UpdateClass = props => {
   };
   return (
     <>
-      <h1>update class </h1>
-      <form onSubmit={handelSubmit}>
-        <div className="inputField">
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            name="name"
-            value={items.name}
-            onChange={handleChange}
-          />
-        </div>
+      <section className="update-class">
+        <h1 className="primaryHeading">update class </h1>
+        <form onSubmit={handelSubmit}>
+          <div className="inputField">
+            <label htmlFor="name">Name: </label>
+            <input
+              type="text"
+              name="name"
+              value={items.name}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="inputField">
-          <label htmlFor="name">Type: </label>
-          <input
-            type="text"
-            name="type"
-            value={items.type}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputField">
+            <label htmlFor="name">Type: </label>
+            <input
+              type="text"
+              name="type"
+              value={items.type}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="inputField">
-          <label htmlFor="length_minutes">Length in Minutes: </label>
-          <input
-            type="number"
-            name="length_minutes"
-            value={items.length_minutes}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputField">
+            <label htmlFor="length_minutes">Length in Minutes: </label>
+            <input
+              type="number"
+              name="length_minutes"
+              value={items.length_minutes}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="inputField">
-          <label htmlFor="intensitylvl">Inensity Level: </label>
-          <input
-            type="text"
-            name="intensitylvl"
-            value={items.intensitylvl}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputField">
+            <label htmlFor="intensitylvl">Inensity Level: </label>
+            <input
+              type="text"
+              name="intensitylvl"
+              value={items.intensitylvl}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="inputField">
-          <label htmlFor="location">Location: </label>
-          <input
-            type="text"
-            name="location"
-            value={items.location}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputField">
+            <label htmlFor="location">Location: </label>
+            <input
+              type="text"
+              name="location"
+              value={items.location}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="inputField">
-          <label htmlFor="current_size">Current Size: </label>
-          <input
-            type="number"
-            name="current_size"
-            value={items.current_size}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputField">
+            <label htmlFor="current_size">Current Size: </label>
+            <input
+              type="number"
+              name="current_size"
+              value={items.current_size}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="inputField">
-          <label htmlFor="max_size">Max Size: </label>
-          <input
-            type="number"
-            name="max_size"
-            value={items.max_size}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputField">
+            <label htmlFor="max_size">Max Size: </label>
+            <input
+              type="number"
+              name="max_size"
+              value={items.max_size}
+              onChange={handleChange}
+            />
+          </div>
 
-        <button>Update Class</button>
-      </form>
+          <button className="btn u-margin-top-medium">Update Class</button>
+        </form>
+      </section>
     </>
   );
 };

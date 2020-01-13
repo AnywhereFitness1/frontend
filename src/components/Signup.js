@@ -1,36 +1,48 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-import axiosWithAuth from "../axiosWithAuth";
+import axiosWithAuth from "../authentication/axiosWithAuth";
 
 const Signup = props => {
   return (
-    <Form className="signupForm">
-      <Field type="text" name="username" placeholder="username" />
-      {props.touched.username && props.errors.username && (
-        <p className="error">{props.errors.username}</p>
-      )}
-      <Field type="password" name="password" placeholder="password" />
-      {props.touched.password && props.errors.password && (
-        <p className="error">{props.errors.password}</p>
-      )}
-      <Field
-        type="password"
-        name="passwordVerify"
-        placeholder="Verify password"
-      />
-      {props.touched.passwordVerify && props.errors.passwordVerify && (
-        <p className="error">{props.errors.passwordVerify}</p>
-      )}
-      <Field as="select" name="department">
-        <option value="">Choose Department</option>
-        <option value="client">Client</option>
-        <option value="instructor">Instructor</option>
-      </Field>
-      <button type="submit">Submit</button>
-    </Form>
+    <section className="signup">
+      <Link to="/login" className="btn-link u-margin-bottom-medium">
+        Click here to login
+      </Link>
+      <p>Please fill out the form below to sign up</p>
+      <Form>
+        <Field type="text" name="username" placeholder="username" />
+        {props.touched.username && props.errors.username && (
+          <p className="error">{props.errors.username}</p>
+        )}
+        <Field type="password" name="password" placeholder="password" />
+        {props.touched.password && props.errors.password && (
+          <p className="error">{props.errors.password}</p>
+        )}
+        <Field
+          type="password"
+          name="passwordVerify"
+          placeholder="Verify password"
+        />
+        {props.touched.passwordVerify && props.errors.passwordVerify && (
+          <p className="error">{props.errors.passwordVerify}</p>
+        )}
+        <Field as="select" name="department">
+          <option value="">Choose Department</option>
+          <option value="client">Client</option>
+          <option value="instructor">Instructor</option>
+        </Field>
+        <button
+          type="submit"
+          className="btn u-margin-top-medium u-margin-bottom-medium"
+        >
+          Submit
+        </button>
+      </Form>
+    </section>
   );
 };
 
