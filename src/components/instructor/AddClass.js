@@ -5,7 +5,8 @@ import axios from "axios";
 
 import axiosWithAuth from "../../authentication/axiosWithAuth";
 
-const AddClass = () => {
+const AddClass = ({ values }) => {
+  console.log("values from add class", values);
   return (
     <Form>
       <Field type="text" name="className" placeholder="Class Name" />
@@ -54,10 +55,10 @@ const FormikAddClassForm = withFormik({
     console.log("add class value:", values);
     axiosWithAuth()
       .post("/createclass", {
-        name: values.className.toLowerCase(),
+        name: values.className,
         type: values.typeOfClass,
-        Length_minutes: values.lengthOfClass,
-        intensity_lvl: values.intensity,
+        length_minutes: values.lengthOfClass,
+        intensitylvl: values.intensity,
         location: values.location,
         current_size: values.currentSize,
         max_size: values.maxSize
